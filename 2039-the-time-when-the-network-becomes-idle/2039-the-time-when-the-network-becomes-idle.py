@@ -27,12 +27,11 @@ class Solution:
         cnt = -1
         for i in range(1,n):
             time =  distance[i] * 2
-     
             send =  distance[i] * 2 // patience[i]
-            
+        
             if  distance[i] * 2 % patience[i] > 0 : 
                 send += 1
-            # msg = [(send-j) * patience[i] for j in range(send)]
+                
             counting = patience[i] * send + time - patience[i]
             cnt = max(cnt, counting)
             

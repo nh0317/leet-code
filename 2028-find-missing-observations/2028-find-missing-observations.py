@@ -3,34 +3,8 @@ class Solution:
         m = len(rolls)
         total = mean * (n + m) - sum(rolls)
         
-        if total > n * 6 or total < 1*n: 
+        if n * 6 < total or 1 * n > total:
             return []
         
-        if total == n * 6:
-            return [6] * n
-        
-        if total == 1 * n:
-            return [1] * n
-        
-        minn = total // n
-        
-        result = [minn for _ in range(n)]
-        
-        summ = sum(result)
-        idx = 0
-        while summ <= n * 6:
-            if summ == total:
-                return result
-            elif summ > total:
-                if result[idx] <= 1:
-                    idx += 1
-                else: 
-                    result[idx] -= 1
-                    summ -= 1
-            else:
-                if result[idx] >= 6:
-                    idx += 1
-                else: 
-                    result[idx] += 1
-                    summ += 1
-        
+        q, r = divmod(total, n)
+        return [q] * (n-r) + [q+1] * r

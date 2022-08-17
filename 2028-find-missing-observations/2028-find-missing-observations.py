@@ -22,19 +22,15 @@ class Solution:
             if summ == total:
                 return result
             elif summ > total:
-                if idx < n:
-                    if result[idx] <= 1:
-                        idx += 1
-                    else: 
-                        result[idx] -= 1
-                        summ -= 1
-                else: return []
+                if result[idx] <= 1:
+                    idx += 1
+                else: 
+                    result[idx] -= 1
+                    summ -= 1
             else:
-                if idx < n:
-                    if result[idx] >= 6:
-                        idx += 1
-                    else: 
-                        result[idx] += 1
-                        summ += 1
-                else: return []
+                if result[idx] >= 6:
+                    idx += 1
+                else: 
+                    result[idx] += 1
+                    summ += 1
         

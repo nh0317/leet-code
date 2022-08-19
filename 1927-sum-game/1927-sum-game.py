@@ -21,4 +21,4 @@ class Solution:
             return True
         
         else:
-            return abs(summ) / 9 != abs(cnt) / 2
+            return abs(summ) / 9 != abs(cnt) /2

@@ -46,7 +46,7 @@ class Solution:
         tail = self.move(head, n-k)
             
         node = ListNode(tail.val, tail.next)
-        head = self.remove(head, n-k)
         node = self.append(node, head)
+        node = self.remove(node, n)
         
         return node

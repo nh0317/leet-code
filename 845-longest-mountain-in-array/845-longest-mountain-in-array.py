@@ -1,34 +1,20 @@
 class Solution:
     def longestMountain(self, arr: List[int]) -> int:
+        dp1 = [0 for _ in range(len(arr))]
+        dp2 = [0 for _ in range(len(arr))]
+        
+        
+        for i in range(1,len(arr)):
+            if arr[i-1] < arr[i] :
+                dp1[i] = dp1[i-1] + 1
+        
+        for i in range(len(arr)-2, -1, -1):
+            if arr[i] > arr[i+1] :
+                dp2[i] = dp2[i+1] + 1
         
         maxx = 0
-        g = 0
-        start = 1
-        end = 0
-        for i in range(1, len(arr)):
-            if arr[i-1] < arr[i]:
-                if g == 0:
-                    g = 1
-                    start = i-1
-                elif g == -1:
-                    maxx = max(maxx, end - start + 1)
-                    start = i-1
-                    g *= -1
-                
-            elif arr[i-1] > arr[i]:
-                if g == 1:
-                    g *= -1
-                    end = i
-                elif g == -1:
-                    end = i
-            else:
-                if g == -1:
-                    maxx = max(maxx, end - start + 1)
-                g = 0
-                start = i
-            # print(arr[i-1],arr[i],start, end, g)
-                    
-        # print(start, end, g)
-        if end - start > 0 and g == -1:
-            maxx = max(maxx, end - start + 1)
+        for i in range(len(arr)):
+            if dp1[i] > 0 and dp2[i] > 0:
+                maxx = max(dp1[i]+dp2[i]+1, maxx)
+        
         return maxx

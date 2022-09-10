@@ -4,8 +4,10 @@ import random
 class Solution:
 
     def __init__(self, nums: List[int]):
-        self.original = copy.deepcopy(nums)
-        self.shuffled = copy.deepcopy(nums)
+        self.original = []
+        self.shuffled = []
+        self.original.extend(nums)
+        self.shuffled.extend(nums)
         
     def reset(self) -> List[int]:
         return self.original

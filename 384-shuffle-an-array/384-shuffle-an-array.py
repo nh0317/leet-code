@@ -4,9 +4,8 @@ import random
 class Solution:
 
     def __init__(self, nums: List[int]):
-        self.original = []
+        self.original = nums
         self.shuffled = []
-        self.original.extend(nums)
         self.shuffled.extend(nums)
         
     def reset(self) -> List[int]:

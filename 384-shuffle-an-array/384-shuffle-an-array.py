@@ -5,14 +5,14 @@ class Solution:
 
     def __init__(self, nums: List[int]):
         self.original = copy.deepcopy(nums)
+        self.shuffled = copy.deepcopy(nums)
         
     def reset(self) -> List[int]:
         return self.original
         
     def shuffle(self) -> List[int]:
-        shuffled = copy.deepcopy(self.original)
-        random.shuffle(shuffled)
-        return shuffled
+        random.shuffle(self.shuffled)
+        return self.shuffled
 
 
 # Your Solution object will be instantiated and called as such:

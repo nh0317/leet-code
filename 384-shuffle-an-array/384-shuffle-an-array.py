@@ -5,8 +5,7 @@ class Solution:
 
     def __init__(self, nums: List[int]):
         self.original = nums
-        self.shuffled = []
-        self.shuffled.extend(nums)
+        self.shuffled = nums[:]
         
     def reset(self) -> List[int]:
         return self.original

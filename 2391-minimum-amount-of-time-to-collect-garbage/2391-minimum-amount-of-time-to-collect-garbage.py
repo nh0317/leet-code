@@ -1,29 +1,20 @@
 class Solution:
-    
-    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+    def travel_home(self, garbage, travel, g_type):
         cnt = 0
         g = 0
-        p = 0
-        m = 0
-                
         for i in range(len(garbage)):
-            if garbage[i].count("G"):
+            if garbage[i].count(g_type):
                 while g < i:
                     cnt += travel[g]
                     g += 1
-                cnt += garbage[i].count("G")
-                
-            if garbage[i].count("P"):
-                while p < i:
-                    cnt += travel[p]
-                    p += 1
-                cnt += garbage[i].count("P")
-                
-            if garbage[i].count("M"):
-                while m < i:
-                    cnt += travel[m]
-                    m += 1
-                cnt += garbage[i].count("M")
+                cnt += garbage[i].count(g_type)
+        return cnt
+        
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        
+        cnt = self.travel_home(garbage, travel, "G")
+        cnt += self.travel_home(garbage, travel, "P")
+        cnt += self.travel_home(garbage, travel, "M")
                 
         return cnt 
                 
